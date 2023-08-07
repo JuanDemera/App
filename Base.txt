@@ -1,0 +1,67 @@
+CREATE TABLE autores (
+    id_autor INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_autor VARCHAR(100) NOT NULL,
+    nacionalidad VARCHAR(50),
+    fecha_nacimiento DATE
+);
+
+INSERT INTO autores (nombre_autor, nacionalidad, fecha_nacimiento)
+VALUES
+    ('Patrick Rothfuss', 'Estados Unidos', '1973-06-06'),
+    ('George Orwell', 'Reino Unido', '1903-06-25'),
+    ('Gabriel García Márquez', 'Colombia', '1927-03-06'),
+    ('Jane Austen', 'Reino Unido', '1775-12-16'),
+    ('J.K. Rowling', 'Reino Unido', '1965-07-31'),
+    ('J.R.R. Tolkien', 'Reino Unido', '1892-01-03'),
+    ('Harper Lee', 'Estados Unidos', '1926-04-28'),
+    ('Suzanne Collins', 'Estados Unidos', '1962-08-10'),
+    ('Carlos Ruiz Zafón', 'España', '1964-09-25');
+
+    CREATE TABLE editoriales (
+    id_editorial INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_editorial VARCHAR(100) NOT NULL,
+    pais VARCHAR(50)
+);
+
+INSERT INTO editoriales (nombre_editorial, pais)
+VALUES
+    ('DAW Books', 'Estados Unidos'),
+    ('Secker & Warburg', 'Reino Unido'),
+    ('Editorial Sudamericana', 'Argentina'),
+    ('Thomas Egerton', 'Reino Unido'),
+    ('Bloomsbury', 'Reino Unido'),
+    ('George Allen & Unwin', 'Reino Unido'),
+    ('Editorial La Oveja Negra', 'Colombia'),
+    ('J. B. Lippincott & Co.', 'Estados Unidos'),
+    ('Scholastic', 'Estados Unidos'),
+    ('Editorial Planeta', 'España');
+
+    -- Crear la tabla libros con anio_publicacion como INT
+CREATE TABLE libros (
+    id_libro INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(200) NOT NULL,
+    id_autor INT,
+    id_editorial INT,
+    anio_publicacion INT, -- Cambiado a INT
+    genero VARCHAR(100),
+    isbn VARCHAR(20),
+    idioma VARCHAR(50),
+    cantidad_paginas INT,
+    precio DECIMAL(8, 2),
+    FOREIGN KEY (id_autor) REFERENCES autores(id_autor),
+    FOREIGN KEY (id_editorial) REFERENCES editoriales(id_editorial)
+);
+
+-- Insertar datos de ejemplo en la tabla libros
+INSERT INTO libros (titulo, id_autor, id_editorial, anio_publicacion, genero, isbn, idioma, cantidad_paginas, precio)
+VALUES
+    ('El nombre del viento', 1, 1, 2007, 'Fantasía', '978-8499082479', 'Español', 662, 20.50),
+    ('1984', 2, 2, 1949, 'Ciencia ficción', '978-0452284234', 'Inglés', 328, 15.75),
+    ('Cien años de soledad', 3, 3, 1967, 'Realismo mágico', '978-0307474728', 'Español', 417, 18.90),
+    ('Orgullo y prejuicio', 4, 4, 1813, 'Novela romántica', '978-0486284736', 'Inglés', 279, 12.25),
+    ('Harry Potter y la piedra filosofal', 5, 5, 1997, 'Fantasía', '978-0747532699', 'Español', 256, 22.00),
+    ('El señor de los anillos: La comunidad del anillo', 6, 6, 1954, 'Fantasía', '978-0547928210', 'Español', 432, 25.50),
+    ('Crónica de una muerte anunciada', 3, 7, 1981, 'Realismo mágico', '978-1400034956', 'Español', 128, 11.00),
+    ('Matar a un ruiseñor', 7, 8, 1960, 'Novela clásica', '978-0061120084', 'Español', 336, 16.75),
+    ('Los juegos del hambre', 8, 9, 2008, 'Ciencia ficción', '978-0439023528', 'Español', 384, 19.95),
+    ('La sombra del viento', 9, 10, 2001, 'Misterio', '978-8408187025', 'Español', 560, 21.00);
