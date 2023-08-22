@@ -14,6 +14,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,10 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatIconModule,
     MatToolbarModule,
     MatCardModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule,
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
