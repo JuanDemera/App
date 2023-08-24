@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AsignacionService {
-  private URL: string = 'http://localhost:3000/rest/Asignacion/findAll/json';
+  private URL: string = 'https://tudusapi-production.up.railway.app/rest/Asignacion/findAll/json';
+  //private URL: string = 'http://localhost:3000/rest/Asignacion/findAll/json';
   constructor(private http: HttpClient) {}
 
   getResponse() {
